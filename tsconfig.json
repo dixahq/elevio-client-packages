@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "target": "es5",
+    "preserveConstEnums": true,
+    "lib": ["es2017", "es7", "es6", "dom"],
+    "outDir": "dist",
+    "declaration": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "jsx": "react"
+  },
+  "exclude": ["node_modules", "dist"],
+  "files": ["src/index.ts"]
+}
