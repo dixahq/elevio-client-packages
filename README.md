@@ -18,7 +18,7 @@ npm i elevio
 Then you can pull in the Elevio package
 
 ```js
-import Elevio from 'elevio/client';
+import Elevio from 'elevio/lib/client';
 ```
 
 or
@@ -62,7 +62,7 @@ Elevio.on('widget:closed', () => {
 Import the package
 
 ```jsx
-import Elevio from 'elevio/react';
+import Elevio from 'elevio/lib/react';
 ```
 
 Then drop the Elevio component into your component hierarchy, making sure you pass the required account id.
@@ -92,7 +92,7 @@ Then you can rebuild all the packages by running the npm script `build`.
 npm run build
 ```
 
-This build the Elevio package and puts the build files in the `dist` folder.
+This build the Elevio package and puts the build files in the `lib` folder.
 
 ## Running examples
 
