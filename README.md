@@ -1,6 +1,6 @@
 # client-packages
 
-This repository contains all the packages to install [Elev.io](https://elev.io/) into your site using a npm package.
+This repository contains all the packages to install [Elev.io](https://elev.io/) into your site using an npm package.
 Currently there are two packages, one that gives you imperative functions to call and the other is a React integration.
 
 ## Usage
@@ -27,7 +27,7 @@ or
 import { client as Elevio } from 'elevio';
 ```
 
-Then make sure before you call any other functions you call the `load` function and pass in your account id see the [installation](https://app.elev.io/installation) page to get our account id. This loads the Elevio javascript and sets up the javascript ready to use.
+Then make sure before you call any other functions you call the `load` function and pass in your account id (see the [installation](https://app.elev.io/installation) page to get our account id). This loads the Elevio javascript and sets up the javascript ready to use.
 
 **_NOTE_**
 You are free to use the `on` function to setup any event listens at any time you like, so you don't have to wait for the `load` function to complete before calling that.
