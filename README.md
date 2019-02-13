@@ -29,7 +29,8 @@ import { client as Elevio } from 'elevio';
 
 Then make sure before you call any other functions you call the `load` function and pass in your account id see the [installation](https://app.elev.io/installation) page to get our account id. This loads the Elevio javascript and sets up the javascript ready to use.
 
-**NOTE:** You are free to use the `on` function to setup any event listens at any time you like, so you dont' have to wait for the `load` function to complete before calling that.
+**_NOTE_**
+You are free to use the `on` function to setup any event listens at any time you like, so you don't have to wait for the `load` function to complete before calling that.
 
 ```js
 Elevio.load('my-account-id').then(() => {
@@ -91,17 +92,28 @@ Then you can rebuild all the packages by running the npm script `build`.
 npm run build
 ```
 
-This the package and puts the build files in the `dist` folder.
+This build the Elevio package and puts the build files in the `dist` folder.
 
 ## Running examples
 
 First install all dependencies by running `npm install`.
 
-Then run one of the example scripts.
-Have a look in the examples directory for a list of the examples.
+Then fire up the server by running the command `npm run example-server`.
+You can then open a browser to [http://localhost:4000](http://localhost:4000) to see an index of the example projects.
 
-For the simple example run `npm run example:simple`.
-To run the React example run `npm run example:react-simple`.
+## Running tests
+
+Make sure you have all dependencies installed, then run
+
+```bash
+  npm run ci
+```
+
+or if you want to run Cypress interactively get the example server running and then
+
+```bash
+  npx cypress open
+```
 
 ## Submitting issues / pull requests
 
@@ -111,7 +123,8 @@ If you find an issue or something missing with these packages please feel free t
 
 These packages have been built using Typescript and the type definitions are included in the package.
 
-NOTE due to a limitation of TS (currently using TS 3.3) to get type safety for the callback function of the `on` you have to provide the string on the event you want to use as a generic, so for example, if you want to set a `'load'` callback you would:
+**_NOTE_**
+due to a limitation of TS (currently using TS 3.3) to get type safety for the callback function of the `on` you have to provide the string on the event you want to use as a generic, so for example, if you want to set a `'load'` callback you would:
 
 ```typescript
 Elevio.on<'load'>('load', elev => {
