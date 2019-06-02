@@ -413,7 +413,10 @@ export type WindowElev = {
    * Note that this is the only method that can be called before the load event is emitted.
    * See {@link https://api-docs.elevio.help/en/articles/26-on | On} for details about all the different events.
    */
-  on: <T extends OnEventKey>(elevioEvent: T, cb: OnEventTypes[T]) => void;
+  on: <T extends Readonly<OnEventKey>>(
+    elevioEvent: T,
+    cb: OnEventTypes[T]
+  ) => void;
 
   /** Open the widget to the last page the user was on. */
   open: () => void;

@@ -122,12 +122,3 @@ If you find an issue or something missing with these packages please feel free t
 ## Typescript support
 
 These packages have been built using Typescript and the type definitions are included in the package.
-
-**_NOTE_**
-due to a limitation of TS (currently using TS 3.3) to get type safety for the callback function of the `on` you have to provide the string on the event you want to use as a generic, so for example, if you want to set a `'load'` callback you would:
-
-```typescript
-Elevio.on<'load'>('load', elev => {
-  // Now the elev variable is correctly typed to the particular callback.
-});
-```

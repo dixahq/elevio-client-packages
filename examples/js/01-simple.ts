@@ -24,6 +24,10 @@ function setupHandlers() {
   Elevio.on('widget:closed', () => {
     console.log('Elevio has closed!!!');
   });
+
+  Elevio.on('widget:article:view', articleId => {
+    console.log(`Article: ${articleId} has been viewed`);
+  });
 }
 
 setupHandlers();
