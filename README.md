@@ -3,6 +3,8 @@
 This repository contains all the packages to install [Elev.io](https://elev.io/) into your site using an npm package.
 Currently there are two packages, one that gives you imperative functions to call and the other is a React integration.
 
+You can See documentation of all methods available here: [https://api-docs.elevio.help/en/articles/89-how-to-install-elevio-via-npm](https://api-docs.elevio.help/en/articles/89-how-to-install-elevio-via-npm)
+
 ## Usage
 
 ### Npm module
@@ -59,6 +61,8 @@ Elevio.on('widget:closed', () => {
 
 ### React usage
 
+You can view documentation of all available props here [https://api-docs.elevio.help/en/articles/90-how-to-integrate-elevio-into-react](https://api-docs.elevio.help/en/articles/90-how-to-integrate-elevio-into-react)
+
 Import the package
 
 ```jsx
@@ -72,8 +76,6 @@ Then drop the Elevio component into your component hierarchy, making sure you pa
   <Elevio accountId="MY_ACCOUNT_ID" />
 </div>
 ```
-
-You can also pass any `on` functions you like to get notified of when things occur. See [https://github.com/elevio/client-packages/blob/master/src/react.tsx](https://github.com/elevio/client-packages/blob/master/src/react.tsx) for the documentation of available props.
 
 **_NOTE_**
 you can also use a combination of the standard client usage if you want to do something imperative or something that isn't supported by the React wrapper.
