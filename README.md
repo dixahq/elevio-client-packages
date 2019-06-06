@@ -59,6 +59,33 @@ Elevio.on('widget:closed', () => {
 });
 ```
 
+#### Angular usage
+
+If you are using Angular it is required to use an NgZone so that Elevio doesn't interfere with Angular's change tracking.
+
+```js
+import { Component, NgZone } from '@angular/core';
+
+@Component({
+  selector: 'app-elevio-grid',
+  templateUrl: './elevio.component.html',
+  styleUrls: []
+})
+export class ElevioAndGridComponent {
+  article: number;
+
+  constructor(private _ngZone: NgZone) { }
+
+  onClick() {
+    this._ngZone.runOutsideAngular(() => {
+      (window as any)._elev.openArticle(this.article);
+    });
+  }
+}
+```
+
+For more details see this article [ngZone.runOutsideAngular](https://medium.com/@krzysztof.grzybek89/how-runoutsideangular-might-reduce-change-detection-calls-in-your-app-6b4dab6e374d).
+
 ### React usage
 
 You can view documentation of all available props here [https://api-docs.elevio.help/en/articles/90-how-to-integrate-elevio-into-react](https://api-docs.elevio.help/en/articles/90-how-to-integrate-elevio-into-react)
