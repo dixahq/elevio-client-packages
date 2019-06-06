@@ -67,7 +67,7 @@ If you are using Angular it is required to use an NgZone so that Elevio doesn't 
 import { Component, NgZone } from '@angular/core';
 
 @Component({
-  selector: 'app-elevio-grid',
+  selector: 'app-elevio',
   templateUrl: './elevio.component.html',
   styleUrls: []
 })
