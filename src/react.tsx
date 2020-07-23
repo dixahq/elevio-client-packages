@@ -6,6 +6,11 @@ import PropTypes from 'prop-types';
 
 export { Elevio };
 
+// This just keeps track of if the settings has been enabled via the server or settings
+// that way when we render the component we know if we need to enable it or not
+// NOTE: if the client does _elev.setStettings it won't be picked up by this.
+let serverEnabled: boolean | undefined = undefined;
+
 /** All the things you can pass to Elevio */
 type Props = {
   /** Your account id, found here {@link https://app.elev.io/installation | Installation} */
@@ -173,7 +178,6 @@ class ElevioReact extends React.Component<Props> {
 
     const { accountId } = this.props;
 
-    // TODO: only on initial mount.
     const urlOverride =
       (this.props.developerOptions &&
         this.props.developerOptions.urlOverride) ||
@@ -181,7 +185,7 @@ class ElevioReact extends React.Component<Props> {
 
     Elevio.load(accountId, {
       urlOverride,
-    }).then(_elev => {
+    }).then((_elev) => {
       // Wait until Elevio has loaded before setting settings.
 
       if (this.props.keywords) {
@@ -208,7 +212,9 @@ class ElevioReact extends React.Component<Props> {
         Elevio.setTranslations(this.props.translations);
       }
 
-      Elevio.enable();
+      if (serverEnabled) {
+        Elevio.enable();
+      }
       this.onLoad(_elev);
     });
   }
@@ -218,7 +224,7 @@ class ElevioReact extends React.Component<Props> {
     mountedCount--;
   }
 
-  componentWillReceiveProps(prevProps: Props) {
+  componentDidUpdate(prevProps: Props) {
     if (!equal(this.props.keywords, prevProps.keywords)) {
       Elevio.setKeywords(this.props.keywords);
     }
@@ -245,6 +251,9 @@ class ElevioReact extends React.Component<Props> {
       this.props.settings &&
       !equal(this.props.settings, prevProps.settings)
     ) {
+      if (this.props.settings.enabled) {
+        serverEnabled = this.props.settings.enabled;
+      }
       Elevio.setSettings(this.props.settings);
     }
 
@@ -262,6 +271,10 @@ class ElevioReact extends React.Component<Props> {
   };
 
   onReady = () => {
+    if (typeof serverEnabled === 'undefined') {
+      // @ts-ignore
+      serverEnabled = _elev.getSetting('enabled');
+    }
     this.props.onReady && this.props.onReady();
   };
 

@@ -106,7 +106,7 @@ declare class ElevioReact extends React.Component<Props> {
     static propTypes: {
         accountId: PropTypes.Validator<string>;
         options: PropTypes.Requireable<object>;
-        keywords: PropTypes.Requireable<(string | null)[]>;
+        keywords: PropTypes.Requireable<(string | null | undefined)[]>;
         language: PropTypes.Requireable<string>;
         user: PropTypes.Requireable<object>;
         settings: PropTypes.Requireable<object>;
@@ -127,7 +127,7 @@ declare class ElevioReact extends React.Component<Props> {
     constructor(props: Props);
     componentDidMount(): void;
     componentWillUnmount(): void;
-    componentWillReceiveProps(prevProps: Props): void;
+    componentDidUpdate(prevProps: Props): void;
     onLoad: (_elev: WindowElev) => void;
     onReady: () => void;
     onWidgetOpened: () => void;
@@ -137,11 +137,11 @@ declare class ElevioReact extends React.Component<Props> {
     onPopupClosed: (articleId: string) => void;
     onSearchQuery: (results: {
         query: string;
-        results: {
+        results: Array<{
             category_id: string;
             id: string;
             title: string;
-        }[];
+        }>;
     }) => void;
     onSearchArticleClicked: (result: {
         articleId: string;
