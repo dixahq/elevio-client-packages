@@ -39,7 +39,7 @@ class App extends React.Component<{}, State> {
         <button
           id="increment"
           onClick={() => {
-            this.setState(state => ({
+            this.setState((state) => ({
               count: state.count + 1,
             }));
           }}
