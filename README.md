@@ -151,3 +151,7 @@ If you find an issue or something missing with these packages please feel free t
 ## Typescript support
 
 These packages have been built using Typescript and the type definitions are included in the package.
+
+## License
+
+This elevio package is [MIT licensed](./LICENSE).

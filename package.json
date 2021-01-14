@@ -1,5 +1,6 @@
 {
   "name": "elevio",
+  "license": "MIT",
   "description": "This package contains the Elevio client install packages both in React and native npm module form.",
   "keywords": [
     "Elevio",
