@@ -2,6 +2,8 @@
   "compilerOptions": {
     "strict": true,
     "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "Node",
     "noImplicitAny": true,
     "target": "es5",
     "preserveConstEnums": true,

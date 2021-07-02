@@ -10,46 +10,57 @@
   ],
   "version": "1.0.3",
   "devDependencies": {
-    "@types/ejs": "^2.6.3",
-    "@types/express": "^4.16.1",
-    "@types/html-webpack-plugin": "^3.2.0",
-    "@types/prop-types": "^15.7.1",
-    "@types/react": "^16.8.19",
-    "@types/react-dom": "^16.8.4",
-    "@types/webpack": "^4.4.32",
-    "@types/webpack-dev-middleware": "^2.0.2",
-    "@types/webpack-dev-server": "^3.1.6",
-    "cypress": "^3.3.1",
-    "ejs": "^2.6.1",
-    "express": "^4.17.1",
-    "html-webpack-plugin": "^3.2.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "start-server-and-test": "^1.9.1",
-    "ts-loader": "^6.0.2",
-    "ts-node": "^8.2.0",
-    "typescript": "^3.5.1",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-middleware": "^3.7.0",
-    "webpack-dev-server": "^3.5.1"
+    "@skypack/package-check": "^0.2.2",
+    "@types/ejs": "^3.0.6",
+    "@types/express": "^4.17.12",
+    "@types/html-webpack-plugin": "^3.2.5",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "16.8.19",
+    "@types/react-dom": "16.8.4",
+    "@types/webpack": "^5.28.0",
+    "@types/webpack-dev-middleware": "^5.0.0",
+    "@types/webpack-dev-server": "^3.11.4",
+    "cypress": "3.3.1",
+    "ejs": "2.6.1",
+    "express": "4.17.1",
+    "html-webpack-plugin": "3.2.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "start-server-and-test": "^1.12.5",
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5",
+    "webpack": "^5.41.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-middleware": "^5.0.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "clean": "rm -f ./lib/*",
+    "clean": "rm -f ./lib/*; rm -f ./esm/*",
     "compile": "tsc --build ",
-    "build": "npm run clean; npm run compile",
+    "compile:esm": "tsc --module ES2015 --outDir ./esm",
+    "build": "npm run clean; npm run compile; npm run compile:esm",
     "example-server": "ts-node ./examples/server.ts --project ./examples/tsconfig.json",
     "cypress": "cypress run",
     "ci": "start-server-and-test example-server 4000 cypress",
     "prepare": "npm run build"
   },
   "dependencies": {
-    "fast-deep-equal": "^2.0.1",
-    "prop-types": "^15.7.2"
+    "fast-deep-equal": "^3.1.3",
+    "prop-types": "15.7.2"
   },
   "files": [
-    "lib/*"
+    "lib/*",
+    "esm/*"
   ],
   "main": "lib/index.js",
-  "types": "lib/index.d.ts"
+  "module": "./esm/index.js",
+  "exports": {
+    ".": "./esm/index.js"
+  },
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dixahq/elevio-client-packages"
+  }
 }
