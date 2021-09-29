@@ -1,4 +1,4 @@
-import { Nullable, User, SettingsOptions, WindowElev } from './elevio';
+import { Nullable, User, SettingsOptions, WindowElev, RenderType } from './elevio';
 import * as React from 'react';
 import Elevio from './client';
 import PropTypes from 'prop-types';
@@ -101,6 +101,18 @@ declare type Props = {
      * The callback has the article ID as it’s first argument.
      */
     onWidgetArticleView?: (articleId: string) => void;
+    /**
+     * Called when a helper is clicked.
+     * The callback returns an object containing `actionId` (the article or module that the helper
+     * opens), `type` ('elevioInline' for popup article, 'elevioArticle' for article that opens in
+     * Assistant, 'elevioModule' for module that opens in Assistant) and `target` (the Element that the
+     * helper is attached to).
+     */
+    onHelperClicked?: (result: {
+        actionId: string;
+        type: RenderType;
+        target: HTMLElement;
+    }) => void;
 };
 declare class ElevioReact extends React.Component<Props> {
     static propTypes: {
@@ -123,6 +135,7 @@ declare class ElevioReact extends React.Component<Props> {
         onSearchArticleClicked: PropTypes.Requireable<(...args: any[]) => any>;
         onCategoryArticleClicked: PropTypes.Requireable<(...args: any[]) => any>;
         onWidgetArticleView: PropTypes.Requireable<(...args: any[]) => any>;
+        onHelperClicked: PropTypes.Requireable<(...args: any[]) => any>;
     };
     constructor(props: Props);
     componentDidMount(): void;
@@ -154,6 +167,11 @@ declare class ElevioReact extends React.Component<Props> {
         source: string;
     }) => void;
     onWidgetArticleView: (articleId: string) => void;
+    onHelperClicked: (result: {
+        actionId: string;
+        type: RenderType;
+        target: HTMLElement;
+    }) => void;
     render(): null;
 }
 export default ElevioReact;

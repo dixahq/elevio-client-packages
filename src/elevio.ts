@@ -1,5 +1,7 @@
 export type Nullable<T> = { [P in keyof T]: T[P] | null };
 
+export type RenderType = 'elevioInline' | 'elevioArticle' | 'elevioModule';
+
 export type OnEventTypes = {
   /**
    * Called after the Elevio script has loaded, but before the Elevio app has been initialised.
@@ -63,6 +65,19 @@ export type OnEventTypes = {
    * The callback has the article ID as it’s first argument.
    */
   'widget:article:view': (articleId: string) => void;
+
+  /**
+   * Called when a helper is clicked.
+   * The callback returns an object containing `actionId` (the article or module that the helper
+   * opens), `type` ('elevioInline' for popup article, 'elevioArticle' for article that opens in
+   * Assistant, 'elevioModule' for module that opens in Assistant) and `target` (the Element that the
+   * helper is attached to).
+   */
+  'helper:clicked': (result: {
+    actionId: string;
+    type: RenderType;
+    target: HTMLElement;
+  }) => void;
 };
 
 export type OnEventKey = keyof OnEventTypes;
@@ -284,7 +299,7 @@ export type ModuleDetails = {
 };
 
 export type ElevioButtonOptions = {
-  type: 'elevioInline' | 'elevioArticle' | 'elevioModule';
+  type: RenderType;
 
   /**
    * For types `elevioInline` and `elevioArticle` it is the ID of the article that should be opened. For type elevioModule it is the ID of the module that should be opened.

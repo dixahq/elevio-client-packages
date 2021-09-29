@@ -87,7 +87,7 @@ declare const ElevioExports: {
      * Note that this is the only method that can be called before the load event is emitted.
      * See {@link https://api-docs.elevio.help/en/articles/26-on | On} for details about all the different events.
      */
-    on: <T extends "load" | "ready" | "widget:opened" | "widget:closed" | "module:opened" | "popup:opened" | "popup:closed" | "search:query" | "search:article:clicked" | "category:article:clicked" | "widget:article:view">(elevioEvent: T, cb: OnEventTypes[T]) => void;
+    on: <T extends "load" | "ready" | "widget:opened" | "widget:closed" | "module:opened" | "popup:opened" | "popup:closed" | "search:query" | "search:article:clicked" | "category:article:clicked" | "widget:article:view" | "helper:clicked">(elevioEvent: T, cb: OnEventTypes[T]) => void;
     /** Open the widget to the last page the user was on. */
     open: () => void;
     /** Open the widget to the article with given ID. */
