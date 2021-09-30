@@ -1,4 +1,10 @@
-import { Nullable, User, SettingsOptions, WindowElev } from './elevio';
+import {
+  Nullable,
+  User,
+  SettingsOptions,
+  WindowElev,
+  RenderType,
+} from './elevio';
 import * as React from 'react';
 import Elevio from './client';
 import equal from 'fast-deep-equal';
@@ -123,6 +129,19 @@ type Props = {
    * The callback has the article ID as it’s first argument.
    */
   onWidgetArticleView?: (articleId: string) => void;
+
+  /**
+   * Called when a helper is clicked.
+   * The callback returns an object containing `actionId` (the article or module that the helper
+   * opens), `type` ('elevioInline' for popup article, 'elevioArticle' for article that opens in
+   * Assistant, 'elevioModule' for module that opens in Assistant) and `target` (the Element that the
+   * helper is attached to).
+   */
+  onHelperClicked?: (result: {
+    actionId: string;
+    type: RenderType;
+    target: HTMLElement;
+  }) => void;
 };
 
 // TODO:
@@ -152,6 +171,7 @@ class ElevioReact extends React.Component<Props> {
     onSearchArticleClicked: PropTypes.func,
     onCategoryArticleClicked: PropTypes.func,
     onWidgetArticleView: PropTypes.func,
+    onHelperClicked: PropTypes.func,
   };
 
   constructor(props: Props) {
@@ -166,6 +186,7 @@ class ElevioReact extends React.Component<Props> {
     Elevio.on('search:article:clicked', this.onSearchArticleClicked);
     Elevio.on('category:article:clicked', this.onCategoryArticleClicked);
     Elevio.on('widget:article:view', this.onWidgetArticleView);
+    Elevio.on('helper:clicked', this.onHelperClicked);
   }
 
   componentDidMount() {
@@ -325,6 +346,14 @@ class ElevioReact extends React.Component<Props> {
 
   onWidgetArticleView = (articleId: string) => {
     this.props.onWidgetArticleView && this.props.onWidgetArticleView(articleId);
+  };
+
+  onHelperClicked = (result: {
+    actionId: string;
+    type: RenderType;
+    target: HTMLElement;
+  }) => {
+    this.props.onHelperClicked && this.props.onHelperClicked(result);
   };
 
   render() {
