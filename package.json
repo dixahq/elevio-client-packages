@@ -41,7 +41,7 @@
     "example-server": "ts-node ./examples/server.ts --project ./examples/tsconfig.json",
     "cypress": "cypress run",
     "ci": "start-server-and-test example-server 4000 cypress",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "fast-deep-equal": "^2.0.1",
