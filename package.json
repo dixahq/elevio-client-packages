@@ -8,7 +8,7 @@
     "elev",
     "React"
   ],
-  "version": "1.1.0",
+  "version": "1.0.3",
   "devDependencies": {
     "@types/ejs": "^2.6.3",
     "@types/express": "^4.16.1",
@@ -41,7 +41,7 @@
     "example-server": "ts-node ./examples/server.ts --project ./examples/tsconfig.json",
     "cypress": "cypress run",
     "ci": "start-server-and-test example-server 4000 cypress",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "fast-deep-equal": "^2.0.1",
