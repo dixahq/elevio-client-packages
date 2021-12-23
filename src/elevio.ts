@@ -18,6 +18,9 @@ export type OnEventTypes = {
   /** Called after the widget is closed. */
   'widget:closed': () => void;
 
+  /** Called after a module is loaded. The callback has the module type and any options that are relevant. */
+  'module:loaded': (result: { type: string; data: object }) => void;
+
   /** Called after a module is opened. The callback has the module ID as it’s first argument. */
   'module:opened': (moduleId: string) => void;
 
@@ -78,6 +81,83 @@ export type OnEventTypes = {
     type: RenderType;
     target: HTMLElement;
   }) => void;
+
+  'suggestions:article:clicked': (result: {
+    articleId: string;
+    source: string;
+  }) => void;
+
+  'related:article:clicked': (result: {
+    articleId: string;
+    source: string;
+    relatedFrom: string;
+  }) => void;
+
+  'article:interlink:clicked': (result: {
+    id: string;
+    type: string;
+    clickedFrom: string;
+  }) => void;
+
+  'article:feedback:reaction': (result: {
+    id: string;
+    reaction: number;
+    title: string;
+  }) => void;
+
+  'article:feedback:text': (result: {
+    id: string;
+    text: string;
+    title: string;
+  }) => void;
+
+  'article:kblink:clicked': (articleId: string) => void;
+
+  'page:view': (result: { pageUrl: string }) => void;
+
+  'article:data:loaded': (result: {
+    articleId: string;
+    source: string;
+    title: string;
+    body: string;
+  }) => void;
+
+  'article:data:error': (result: { articleId: string; source: string }) => void;
+
+  'category:data:loaded': (result: {
+    id: string;
+    title: string;
+    source: string;
+    articles: Array<{ id: string; title: string }>;
+    subCategories: Array<{
+      articles: Array<{ id: string; title: string }>;
+      articlesCount: number;
+      id: string;
+      title: string;
+    }>;
+  }) => void;
+
+  'article:feedback:loading': (result: {
+    articleId: number;
+    source: string;
+    stage: 'reaction' | 'text' | 'email' | 'success';
+  }) => void;
+
+  'article:feedback:loaded': (result: {
+    articleId: number;
+    source: string;
+    stage: 'reaction' | 'text' | 'email' | 'success';
+  }) => void;
+
+  'article:feedback:error': (result: {
+    articleId: number;
+    source: string;
+    stage: 'reaction' | 'text' | 'email' | 'success';
+  }) => void;
+
+  'article:related:loaded': (result: { source: string }) => void;
+  'suggestions:data:loaded': (result: { source: string }) => void;
+  'suggestions:data:error': (result: { source: string }) => void;
 };
 
 export type OnEventKey = keyof OnEventTypes;
