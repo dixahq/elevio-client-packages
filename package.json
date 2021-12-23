@@ -8,7 +8,7 @@
     "elev",
     "React"
   ],
-  "version": "1.1.0",
+  "version": "1.2.0",
   "devDependencies": {
     "@skypack/package-check": "^0.2.2",
     "@types/ejs": "^3.0.6",
