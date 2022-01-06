@@ -9,7 +9,7 @@ import {
 import * as React from 'react';
 import Elevio from './client';
 import equal from 'fast-deep-equal';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 
 export { Elevio };
 
