@@ -36,7 +36,7 @@
   "scripts": {
     "clean": "rm -f ./lib/*; rm -f ./esm/*",
     "compile": "tsc --build ",
-    "compile:esm": "tsc --module ES2015 --outDir ./esm",
+    "compile:esm": "tsc --module ES2015 --outDir ./esm --target es2017",
     "build": "npm run clean; npm run compile; npm run compile:esm",
     "example-server": "ts-node ./examples/server.ts --project ./examples/tsconfig.json",
     "cypress": "cypress run",
@@ -54,7 +54,13 @@
   "main": "lib/index.js",
   "module": "./esm/index.js",
   "exports": {
-    ".": "./esm/index.js"
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./lib/index.js",
+      "default": "./esm/index.js"
+    },
+    "./esm/": "./esm/",
+    "./lib/": "./lib/"
   },
   "types": "lib/index.d.ts",
   "repository": {
