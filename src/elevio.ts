@@ -53,7 +53,7 @@ export type OnEventTypes = {
   'search:article:clicked': (result: {
     articleId: number;
     // TODO: should be included
-    categoryId: string;
+    // categoryId: string;
     source: string;
   }) => void;
 
@@ -122,19 +122,22 @@ export type OnEventTypes = {
   'page:view': (result: { pageUrl: string }) => void;
 
   'article:data:loaded': (result: {
-    articleId: string;
+    articleId: string | number;
     source: string;
     title: string;
     body: string;
   }) => void;
 
-  'article:data:error': (result: { articleId: string; source: string }) => void;
+  'article:data:error': (result: {
+    articleId: string | number;
+    source: string;
+  }) => void;
 
   'category:data:loaded': (result: {
     id: string;
     title: string;
     source: string;
-    articles: Array<{ id: string; title: string }>;
+    articles: Array<{ id: number; title: string }>;
     subCategories: Array<{
       articles: Array<{ id: string; title: string }>;
       articlesCount: number;
@@ -144,19 +147,19 @@ export type OnEventTypes = {
   }) => void;
 
   'article:feedback:loading': (result: {
-    articleId: number;
+    articleId: number | string;
     source: string;
     stage: 'reaction' | 'text' | 'email' | 'success';
   }) => void;
 
   'article:feedback:loaded': (result: {
-    articleId: number;
+    articleId: number | string;
     source: string;
     stage: 'reaction' | 'text' | 'email' | 'success';
   }) => void;
 
   'article:feedback:error': (result: {
-    articleId: number;
+    articleId: number | string;
     source: string;
     stage: 'reaction' | 'text' | 'email' | 'success';
   }) => void;
