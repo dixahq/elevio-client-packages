@@ -22,7 +22,7 @@ export type OnEventTypes = {
   'module:loaded': (result: { type: string; data: object }) => void;
 
   /** Called after a module is opened. The callback has the module ID as it’s first argument. */
-  'module:opened': (moduleId: string) => void;
+  'module:opened': (moduleId: number) => void;
 
   /** Called after a popup is opened. The callback has the article ID as it’s first argument. */
   'popup:opened': (articleId: string) => void;
@@ -36,7 +36,12 @@ export type OnEventTypes = {
    */
   'search:query': (results: {
     query: string;
-    results: Array<{ category_id: string; id: string; title: string }>;
+    results: Array<{
+      // TODO: should be included
+      // category_id: string;
+      id: string;
+      title: string;
+    }>;
   }) => void;
 
   /**
@@ -46,8 +51,9 @@ export type OnEventTypes = {
    * If the link is click inside the assistant then the source is 'assistant'.
    */
   'search:article:clicked': (result: {
-    articleId: string;
-    categoryId: string;
+    articleId: number;
+    // TODO: should be included
+    // categoryId: string;
     source: string;
   }) => void;
 
@@ -58,8 +64,8 @@ export type OnEventTypes = {
    * If the link is click inside the assistant then the source is 'assistant'.
    */
   'category:article:clicked': (result: {
-    articleId: string;
-    categoryId: string;
+    articleId: number;
+    categoryId: number;
     source: string;
   }) => void;
 
@@ -67,7 +73,7 @@ export type OnEventTypes = {
    * Called after an article is viewed in the widget.
    * The callback has the article ID as it’s first argument.
    */
-  'widget:article:view': (articleId: string) => void;
+  'widget:article:view': (articleId: string | number) => void;
 
   /**
    * Called when a helper is clicked.
@@ -77,7 +83,7 @@ export type OnEventTypes = {
    * helper is attached to).
    */
   'helper:clicked': (result: {
-    actionId: string;
+    actionId: string | number;
     type: RenderType;
     target: HTMLElement;
   }) => void;
@@ -90,7 +96,7 @@ export type OnEventTypes = {
   'related:article:clicked': (result: {
     articleId: string;
     source: string;
-    relatedFrom: string;
+    relatedFrom: number | string;
   }) => void;
 
   'article:interlink:clicked': (result: {
@@ -116,19 +122,22 @@ export type OnEventTypes = {
   'page:view': (result: { pageUrl: string }) => void;
 
   'article:data:loaded': (result: {
-    articleId: string;
+    articleId: string | number;
     source: string;
     title: string;
     body: string;
   }) => void;
 
-  'article:data:error': (result: { articleId: string; source: string }) => void;
+  'article:data:error': (result: {
+    articleId: string | number;
+    source: string;
+  }) => void;
 
   'category:data:loaded': (result: {
     id: string;
     title: string;
     source: string;
-    articles: Array<{ id: string; title: string }>;
+    articles: Array<{ id: number; title: string }>;
     subCategories: Array<{
       articles: Array<{ id: string; title: string }>;
       articlesCount: number;
@@ -138,19 +147,19 @@ export type OnEventTypes = {
   }) => void;
 
   'article:feedback:loading': (result: {
-    articleId: number;
+    articleId: number | string;
     source: string;
     stage: 'reaction' | 'text' | 'email' | 'success';
   }) => void;
 
   'article:feedback:loaded': (result: {
-    articleId: number;
+    articleId: number | string;
     source: string;
     stage: 'reaction' | 'text' | 'email' | 'success';
   }) => void;
 
   'article:feedback:error': (result: {
-    articleId: number;
+    articleId: number | string;
     source: string;
     stage: 'reaction' | 'text' | 'email' | 'success';
   }) => void;
