@@ -3,3 +3,4 @@ package-lock.json
 cypress/videos
 lib
 esm
+.DS_Store

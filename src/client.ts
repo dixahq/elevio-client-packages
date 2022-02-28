@@ -6,11 +6,11 @@ declare global {
   }
 }
 
-if (!window._elev) {
+if (typeof window !== 'undefined') {
   // @ts-ignore
   window._elev = {
     q: [],
-    on: function<T extends OnEventKey>(elevioEvent: T, cb: OnEventTypes[T]) {
+    on: function <T extends OnEventKey>(elevioEvent: T, cb: OnEventTypes[T]) {
       window._elev.q.push([elevioEvent, cb]);
     },
   };
@@ -25,9 +25,9 @@ let load = (
   // So just return the promise if they have already called it.
   if (loadPromise) return loadPromise;
 
-  loadPromise = new Promise<WindowElev>(resolve => {
+  loadPromise = new Promise<WindowElev>((resolve) => {
     window._elev.account_id = accountId;
-    window._elev.on<'load'>('load', _elev => {
+    window._elev.on<'load'>('load', (_elev) => {
       setupFunctions();
       resolve(_elev);
     });
