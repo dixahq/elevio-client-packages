@@ -99,7 +99,8 @@ import Elevio from 'elevio/lib/react';
 or for Next.js:
 
 ```jsx
-const Elevio = dynamic(() => import('elevio/lib/react'));
+import dynamic from 'next/dynamic';
+const Elevio = dynamic(() => import('elevio/lib/react'), { ssr: false });
 ```
 
 Then drop the Elevio component into your component hierarchy, making sure you pass the required account id.
