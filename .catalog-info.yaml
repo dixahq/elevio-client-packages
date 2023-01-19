@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1beta1
+kind: Component
+metadata:
+  name: elevio-client-packages
+  description: This repository contains all the packages to install Elev.io into your site using an npm package. Currently there are two packages, one that gives you imperative functions to call and the other is a React integration.
+  annotations:
+    github.com/project-slug: dixahq/elevio-client-packages
+  tags:
+    - typescript
+spec:
+  type: library
+  lifecycle: production
+  owner: dixahq-frontend-knowledge
