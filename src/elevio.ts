@@ -37,8 +37,7 @@ export type OnEventTypes = {
   'search:query': (results: {
     query: string;
     results: Array<{
-      // TODO: should be included
-      // category_id: string;
+      category_id: string;
       id: string;
       title: string;
     }>;
@@ -52,8 +51,7 @@ export type OnEventTypes = {
    */
   'search:article:clicked': (result: {
     articleId: number;
-    // TODO: should be included
-    // categoryId: string;
+    categoryId: string;
     source: string;
   }) => void;
 

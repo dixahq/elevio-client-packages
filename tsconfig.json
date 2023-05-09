@@ -12,7 +12,8 @@
     "declaration": true,
     "esModuleInterop": true,
     "removeComments": false,
-    "jsx": "react"
+    "jsx": "react",
+    "skipLibCheck": true
   },
   "exclude": ["node_modules", "lib"],
   "files": ["src/index.ts"]
