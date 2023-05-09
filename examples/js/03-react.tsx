@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client';
 import Elevio from '../../src/react';
 
 type State = {
@@ -80,7 +80,11 @@ class App extends React.Component<{}, State> {
 function render() {
   const target = document.getElementById('root');
   if (!target) throw new Error('Cant find target div');
-  ReactDOM.render(<App />, target);
+  ReactDOM.createRoot(target).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
 }
 
 render();

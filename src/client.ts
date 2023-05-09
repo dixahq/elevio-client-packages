@@ -75,7 +75,7 @@ const ElevioExports = {
   /**
    * Disabled Elevio completely, if it was enabled.
    */
-  disable: noop as typeof disable,
+  disable: () => {},
 
   /**
    * Enable Elevio if it was disabled.
