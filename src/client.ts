@@ -267,6 +267,7 @@ const ElevioExports = {
 export default ElevioExports;
 
 function noop(args: any): any {
+  if (typeof window === 'undefined') return;
   console.warn(
     'Elevio not loaded yet, please wait until Elevio.load has completed.'
   );
