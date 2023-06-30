@@ -1,3 +1,5 @@
+'use client';
+
 import { Nullable, User, SettingsOptions, OnEventTypes } from './elevio';
 import * as React from 'react';
 import Elevio from './client';

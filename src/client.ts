@@ -1,3 +1,5 @@
+'use client';
+
 import { WindowElev, OnEventTypes, OnEventKey } from './elevio';
 
 declare global {
