@@ -1,11 +1,4 @@
-import {
-  Nullable,
-  User,
-  SettingsOptions,
-  WindowElev,
-  RenderType,
-  OnEventTypes,
-} from './elevio';
+import { Nullable, User, SettingsOptions, OnEventTypes } from './elevio';
 import * as React from 'react';
 import Elevio from './client';
 import equal from 'fast-deep-equal';
@@ -15,7 +8,7 @@ export { Elevio };
 
 // This just keeps track of if the settings has been enabled via the server or settings
 // that way when we render the component we know if we need to enable it or not
-// NOTE: if the client does _elev.setStettings it won't be picked up by this.
+// NOTE: if the client does _elev.setSettings it won't be picked up by this.
 let serverEnabled: boolean | undefined = undefined;
 
 /** All the things you can pass to Elevio */
