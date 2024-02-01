@@ -205,6 +205,12 @@ export type SettingsOptions = {
   cspStrictCompatibility: boolean;
 
   /**
+   * Allows you to set a nonce for the script that is inlined to handle article clicks when viewing an article in the Assistant.
+   * If you set this option remember to add that hash to your pages CSP settings!
+   */
+  cspInlineScriptNonce: string;
+
+  /**
    * Disables Elevio errors and warnings from appearing in the browser console (not recommended, default: false).
    */
   disableDevelopmentWarnings: boolean;
