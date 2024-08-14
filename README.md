@@ -116,7 +116,7 @@ you can also use a combination of the standard client usage if you want to do so
 
 ## Building
 
-To build these packages first close this repository and then install all the decencies.
+To build these packages first close this repository and then install all the dependencies.
 
 ```bash
 npm i
